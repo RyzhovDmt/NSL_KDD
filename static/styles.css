@@ -1,0 +1,72 @@
+body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+    margin: 16px;
+    margin-left: 180px;
+    margin-right: 180px;
+
+
+}
+h3{
+    font-size: 1.5em;
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+h2{
+font-family: sans-serif;
+    font-size: 1.2em;
+}
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+h3 {
+    /*padding-bottom: 15px;*/
+}
+table {
+    background-color: #e9ecef;
+    /*border-spacing: 20px 11px;  Расстояние между ячейками */
+   }
+td {
+    /*padding: 5px;
+    padding-bottom: 10px;*/
+}
+
+td:nth-child(2n){
+    padding-right: 70px;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    width: 60px;
+    height: 20px
+}
+input[type="submit"] {
+     width: 100px;
+     height: 30px;
+     background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}

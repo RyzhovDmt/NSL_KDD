@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Attack prediction</title>
+
+
+    <!-- Bootstrap core CSS -->
+      <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+  </head>
+
+  <body>
+
+     <div>
+        <h3>NLS-KDD</h3><h2>is attacked: {{ pred }} </h2>
+        <form method="post" action="/predict">
+
+            <table>
+                <tr>
+                    <td><p>Duration </p></td>
+                    <td><p><input type="text" name="duration" value="276" /> </p></td>
+                    <td><p>Logged in </p></td>
+                    <td>
+                        <p>
+                            <select name="logged_in">
+                                <option selected>0</option>
+                                <option>1</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Srv count </p></td>
+                    <td><p><input type="text" name="srv_count" value="28" /> </p></td>
+                    <td><p>Dst host diff srv rate </p></td>
+                    <td><p><input type="text" name="dst_host_same_srv_rate" value="0.08" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Protocol type </p></td>
+                    <td>
+                        <p>
+                            <select name="protocol_type">
+
+                                <option selected>icmp</option>
+                                <option>tcp</option>
+                                <option>udp</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Num compromised </p></td>
+                    <td><p><input type="text" name="num_compromised" value="0.255" /> </p></td>
+                    <td><p>Serror rate </p></td>
+                    <td><p><input type="text" name="serror_rate" value="0.2" /> </p></td>
+                    <td><p>Dst host same src port rate </p></td>
+                    <td><p><input type="text" name="dst_host_same_src_port_rate" value="0.14" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Service </p></td>
+                    <td><p><input type="text" name="service" value="http" /> </p></td>
+                    <td><p>Root shell </p></td>
+                    <td>
+                        <p>
+                            <select name="root_shell">
+                                <option selected>0</option>
+                                <option>1</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Srv serror rate </p></td>
+                    <td><p><input type="text" name="srv_serror_rate" value="0.255" /> </p></td>
+                    <td><p>Dst host srv diff host rate </p></td>
+                    <td><p><input type="text" name="dst_host_srv_diff_host_rate" value="0" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Flag </p></td>
+                    <td>
+                        <p>
+                            <select name="flag">
+
+                                <option selected>OTH</option>
+                                <option>REJ</option>
+                                <option>RSTO</option>
+                                <option>RSTOS0</option>
+                                <option>RSTR</option>
+                                <option>S0</option>
+                                <option>S1</option>
+                                <option>S2</option>
+                                <option>S3</option>
+                                <option>SF</option>
+                                <option>SH</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Su attempted </p></td>
+                    <td>
+                        <p>
+                            <select name="su_attempted">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Rerror rate </p></td>
+                    <td><p><input type="text" name="rerror_rate" value="0.14" /> </p></td>
+                    <td><p>Dst host serror rate </p></td>
+                    <td><p><input type="text" name="dst_host_serror_rate" value="0.25" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Src bytes </p></td>
+                    <td><p><input type="text" name="src_bytes" value="4000" /> </p></td>
+                    <td><p>Num root </p></td>
+                    <td><p><input type="text" name="num_root" value="0" /> </p></td>
+                    <td><p>Srv rerror rate </p></td>
+                    <td><p><input type="text" name="srv_rerror_rate" value="0.14" /> </p></td>
+                    <td><p>Dst host srv serror rate </p></td>
+                    <td><p><input type="text" name="dst_host_srv_serror_rate" value="0.25" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Dst bytes </p></td>
+                    <td><p><input type="text" name="dst_bytes" value="1700" /> </p></td>
+                    <td><p>Num file creations </p></td>
+                    <td><p><input type="text" name="num_file_creations" value="0" /> </p></td>
+                    <td><p>Same srv rate </p></td>
+                    <td><p><input type="text" name="same_srv_rate" value="0.7" /> </p></td>
+                    <td><p>Dst host rerror rate </p></td>
+                    <td><p><input type="text" name="dst_host_rerror_rate" value="0.13" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Land </p></td>
+                    <td>
+                        <p>
+                            <select name="land">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Num shells </p></td>
+                    <td>
+                        <p>
+                            <select name="num_shells">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Diff srv rate </p></td>
+                    <td><p><input type="text" name="diff_srv_rate" value="0.07" /> </p></td>
+                    <td><p>Dst host srv rerror rate </p></td>
+                    <td><p><input type="text" name="dst_host_srv_rerror_rate" value="0.15" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Wrong fragment </p></td>
+                    <td>
+                        <p>
+                            <select name="wrong_fragment">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>3</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Num access files </p></td>
+                    <td>
+                        <p>
+                            <select name="num_access_files">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Srv diff host rate </p></td>
+                    <td><p><input type="text" name="srv_diff_host_rate" value="0.1" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Urgent </p></td>
+                    <td>
+                        <p>
+                            <select name="urgent">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Is host login </p></td>
+                    <td>
+                        <p>
+                            <select name="is_host_login">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+
+                        </p>
+                    </td>
+                    <td><p>Dst host count </p></td>
+                    <td><p><input type="text" name="dst_host_count" value="193" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Hot </p></td>
+                    <td><p><input type="text" name="hot" value="0.18" /> </p></td>
+                    <td><p>Is guest login </p></td>
+                    <td>
+                        <p>
+                            <select name="is_guest_login">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Dst host srv count </p></td>
+                    <td><p><input type="text" name="dst_host_srv_count" value="120" /> </p></td>
+                </tr>
+                <tr>
+                    <td><p>Nun failed logins </p></td>
+                    <td>
+                        <p>
+                            <select name="num_failed_logins">
+
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </p>
+                    </td>
+                    <td><p>Count </p></td>
+                    <td><p><input type="text" name="count" value="83" /> </p></td>
+                    <td><p>Dst host same srv rate </p></td>
+                    <td><p><input type="text" name="dst_host_same_srv_rate" value="0.53" /> </p></td>
+                </tr>
+
+
+
+
+
+                </tr>
+            </table>
+            <input type="submit" value="Pridict"  />
+        </form>
+    </div>
+
+
+
+    </div> <!-- /container -->
+
+
+
+
+  </body>
+</html>
